@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proveedores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background: #fdfdfd;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em; /* Tamaño de fuente más grande */
+      text-align: center; /* Centrar el título */
+      background: #0c0c0c; /* Fondo oscuro */
+      color: white; /* Color de texto blanco */
+      padding: 10px; /* Espaciado interno */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 20px; /* Espacio debajo del título */
+    }
+    h2 {
+      margin-top: 25px;
+      color: #444;
+    }
+    img {
+      width: 150px; /* Ajusta el tamaño de la imagen */
+      float: left; /* Alinear a la izquierda */
+      margin-right: 20px; /* Espacio a la derecha de la imagen */
+      margin-bottom: 20px; /* Espacio debajo de la imagen */
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #ccc; /* Color de fondo gris */
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #aaa; /* Color de fondo gris para el encabezado */
+      color: white;
+    }
+    .back {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 8px 12px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .role {
+      background: #f9fafb;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+    }
+    .objective {
+      background: #d3d3d3; /* Color de fondo gris */
+      border: 1px solid #a7a7a7; /* Border gris más oscuro */
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .requirements {
+      background: #e9ecef; /* Color de fondo claro */
+      border: 1px solid #aaa; /* Border gris */
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+ <a href="../index.html" class="back">⬅ Volver al inicio</a>
+  <h1>Proveedores</h1>
+  <img src="/TISLeilanyASR/Imagenes/Proveedores.png" alt="Imagen de Proveedores" class="">
+
+  <p>
+    El subsistema de <b>Proveedores</b> es esencial para la constructora, ya que permite registrar, consultar y actualizar toda la información relacionada con los proveedores que suministran materiales y recursos. 
+    Su función principal es mantener un control organizado sobre los datos de los proveedores, garantizando que la información esté disponible y actualizada, lo que permite una mejor gestión en la adquisición de insumos y una comunicación efectiva entre la empresa y sus proveedores.
+  </p>
+
+  <h2>Campos de Proveedores</h2>
+  <p>Los principales campos que se registran para cada proveedor son los siguientes:</p>
+  <table>
+    <tr>
+      <th>ID Proveedor</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Sexo</th>
+      <th>Fecha de nacimiento</th>
+      <th>Bloquear</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr>
+      <td>ID único que identifica a cada proveedor dentro de la base de datos.</td>
+      <td>Nombre del proveedor.</td>
+      <td>Correo electrónico para la comunicación.</td>
+      <td>Número de contacto del proveedor.</td>
+      <td>Dirección del proveedor.</td>
+      <td>Sexo del proveedor (masculino/femenino).</td>
+      <td>Fecha de nacimiento del proveedor.</td>
+      <td>Opción para bloquear al proveedor en el sistema.</td>
+      <td>Opción para eliminar al proveedor del sistema cuando ya no sea necesario.</td>
+    </tr>
+  </table>
+
+  <h2>Permisos por rol</h2>
+  <div class="role">
+    <b>Supervisor:</b> 
+    El supervisor debe ser capaz de gestionar la información de los proveedores para que permita registrar (ID, nombre, correo, teléfono, dirección, sexo y fecha de nacimiento), consultar, actualizar (correo, teléfono y dirección) y bloquear proveedores mediante su ID, con el fin de mantener un control eficiente y confiable de la información. Sus responsabilidades incluyen:
+    <ul>
+      <li>Revisar y aprobar la información de los proveedores antes de su inclusión en el sistema.</li>
+      <li>Coordinar la comunicación con los proveedores para asegurar el suministro adecuado de materiales.</li>
+      <li>Monitorear el rendimiento de los proveedores y su cumplimiento de las condiciones acordadas.</li>
+    </ul>
+  </div>
+  <div class="role">
+    <b>Empleado (Ingeniero):</b> 
+    El ingeniero debe ser capaz de consultar y actualizar datos básicos de los proveedores, con el fin de contar con información precisa sobre los materiales y recursos que ingresan a la constructora, garantizando un control adecuado durante el proceso de obra. Sus responsabilidades incluyen:
+    <ul>
+      <li>Verificar que los proveedores cumplan con los estándares de calidad requeridos.</li>
+      <li>Colaborar con el supervisor en la evaluación de nuevos proveedores.</li>
+      <li>Actualizar la información de contacto de los proveedores según sea necesario.</li>
+    </ul>
+  </div>
+
+  <h2>Objetivo del Subsistema</h2>
+  <div class="objective">
+    <p>
+      Garantizar un control preciso y actualizado de los proveedores, asegurando la disponibilidad oportuna de insumos y fortaleciendo la eficiencia en la gestión de compras, abastecimiento y relaciones comerciales de la constructora.
+    </p>
+  </div>
+
+  <h2>Requerimientos por usuario</h2>
+  <div class="requirements">
+    <p>
+      <b>Requerimientos Para la gestión de proveedores</b>
+    </p>
+    <ol>
+      <li>Crear un proveedor ingresando: ID, nombre, correo, teléfono, dirección, sexo y fecha de nacimiento.</li>
+      <li>Acceder a un proveedor existente mediante su ID.</li>
+      <li>Actualizar la información del proveedor: correo, teléfono y dirección.</li>
+      <li>Consultar el estado de los proveedores: verificación de la última actualización y acceso.</li>
+      <li>Eliminar un proveedor que ya no sea necesario.</li>
+      <li>Solicitar la creación de nuevos proveedores o modificaciones a los existentes.</li>
+    </ol>
+  </div>
+
+  <h2>Relación con otros subsistemas</h2>
+  <p>El subsistema de proveedores está directamente relacionado con:</p>
+  <ul>
+    <li><b>Proyectos:</b> Proporciona materiales y recursos necesarios para la ejecución de los proyectos.</li>
+    <li><b>Trabajadores:</b> Permite gestionar la información de los trabajadores que usan los materiales suministrados por los proveedores.</li>
+    <li><b>Finanzas:</b> Conecta con los costos asociados a la adquisición de materiales y servicios de los proveedores.</li>
+  </ul>
+
+  <h1>Diseño de la base de datos del subsistema</h1>
+  <a href="../BDD/BaseDeDatos.html">Base de Datos del subsistema</a>
+  
+  <h1>Responsable del subsistema</h1>
+  <ul>
+    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+  </ul>
+
+</body>
+</html>
