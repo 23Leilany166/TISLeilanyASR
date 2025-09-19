@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clientes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background: #fdfdfd;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em; /* Tamaño de fuente más grande */
+      text-align: center; /* Centrar el título */
+      background: #0c0c0c; /* Fondo verde */
+      color: white; /* Color de texto blanco */
+      padding: 10px; /* Espaciado interno */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 20px; /* Espacio debajo del título */
+    }
+    h2 {
+      margin-top: 25px;
+      color: #444;
+    }
+    img {
+      width: 150px; /* Ajusta el tamaño de la imagen */
+      float: left; /* Alinear a la izquierda */
+      margin-right: 20px; /* Espacio a la derecha de la imagen */
+      margin-bottom: 20px; /* Espacio debajo de la imagen */
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #ccc; /* Color de fondo gris */
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #aaa; /* Color de fondo gris para el encabezado */
+      color: white;
+    }
+    .back {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 8px 12px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .role {
+      background: #f9fafb;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+    }
+    .objective {
+      background: #d3d3d3; /* Color de fondo gris */
+      border: 1px solid #a7a7a7; /* Border gris más oscuro */
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .requirements {
+      background: #e9ecef; /* Color de fondo claro */
+      border: 1px solid #aaa; /* Border gris */
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+ <a href="../index.html" class="back">⬅ Volver al inicio</a>
+  <h1>Clientes</h1>
+  <img src="/TISLeilanyASR/Imagenes/Cliente.png" alt="Imagen de Clientes" class="">
+
+  <p>
+    El subsistema de <b>Clientes</b> es fundamental para la constructora, ya que permite registrar, consultar y actualizar toda la información relacionada con las personas o empresas que contratan los servicios.
+    Su función principal es mantener un control organizado de la base de clientes, garantizando un mejor seguimiento de proyectos y una comunicación efectiva.
+  </p>
+
+  <h2>Campos de Clientes</h2>
+  <p>Los principales campos que se registran para cada cliente son los siguientes:</p>
+  <table>
+    <tr>
+      <th>ID Cliente</th>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+       <th>Apellido Materno</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Sexo</th>
+      <th>Fecha de nacimiento</th>
+      <th>Edad</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr>
+      <td>Código único que identifica a cada cliente dentro del sistema.</td>
+      <td>Nombre completo del cliente para su registro e identificación.</td>
+      <td>Correo electrónico del cliente, usado para comunicación y notificaciones.</td>
+      <td>Número de contacto telefónico para comunicación directa.</td>
+      <td>Dirección física del cliente para ubicar proyectos, entregas o correspondencia.</td>
+      <td>Sexo del cliente (masculino/femenino) para fines estadísticos y registros.</td>
+      <td>Fecha de nacimiento del cliente para cálculos de edad y segmentación.</td>
+      <td>Edad calculada automáticamente a partir de la fecha de nacimiento.</td>
+      <td>Opción que permite eliminar del sistema a un cliente cuando ya no sea necesario conservar sus datos.</td>
+    </tr>
+  </table>
+
+  <h2>Permisos por rol</h2>
+  <div class="role">
+    <b>Supervisor:</b> Tiene la capacidad de registrar nuevos clientes, actualizar su información y consultarla en cualquier momento.
+  </div>
+  <div class="role">
+    <b>Ingeniero Civil:</b> Puede consultar la información registrada de los clientes para fines de planeación y ejecución de proyectos.
+  </div>
+  <div class="role">
+    <b>Supervisor:</b> Supervisa el manejo de la información de clientes y genera reportes para la toma de decisiones.
+  </div>
+
+  <h2>Objetivo del Subsistema</h2>
+  <div class="objective">
+    <p>
+      Mantener un registro confiable y actualizado de los clientes de la constructora con el fin de:
+    </p>
+    <ul>
+      <li>Facilitar la comunicación directa y eficiente.</li>
+      <li>Optimizar el seguimiento de proyectos contratados.</li>
+      <li>Mejorar la organización y control de la información de contacto.</li>
+      <li>Permitir la toma de decisiones estratégicas basadas en datos reales.</li>
+    </ul>
+  </div>
+
+  <h2>Requerimientos por usuario</h2>
+  <div class="requirements">
+    <p>
+      <b>Requerimientos del Cliente</b>
+    </p>
+    <ol>
+    <li>Crear una cuenta ingresando: Nombre, correo electrónico y contraseña.</li>
+    <li>Acceder a una cuenta existente mediante: Correo electrónico y contraseña.</li>
+    <li>Ingresar y actualizar información personal: Nombre, correo electrónico, número de teléfono y dirección de entrega de materiales.</li>
+    <li>Consultar el estado de sus proyectos en proceso: Estado actual (En Planeación, En Construcción, Finalizado), fechas de entrega estimadas.</li>
+    <li>Dejar comentarios, preguntas y reseñas sobre los servicios y proyectos completados.</li>
+    <li>Solicitar cotizaciones para nuevos proyectos y servicios adicionales.</li>
+    </ol>
+  </div>
+
+  <h2>Relación con otros subsistemas</h2>
+  <p>El subsistema de clientes está directamente relacionado con:</p>
+  <ul>
+    <li><b>Proyectos:</b> Asocia a cada cliente con los proyectos que contrata.</li>
+    <li><b>Trabajadores:</b> Permite asignar personal específico a proyectos de clientes.</li>
+    <li><b>Finanzas:</b> Conecta con los pagos, cotizaciones y facturación de los clientes.</li>
+  </ul>
+
+  <h1>Diseño de la base de datos del subsistema</h1>
+  <a href="../BDD/BDClientes.html">Base de Datos del subsistema</a>
+  
+  <h1>Responsable del subsistema</h1>
+  <ul>
+    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+  </ul>
+
+</body>
+</html>

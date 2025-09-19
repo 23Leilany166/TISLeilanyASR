@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajadores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background: #fdfdfd;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em; /* Tamaño de fuente más grande */
+      text-align: center; /* Centrar el título */
+      background: #0c0c0c; /* Fondo verde */
+      color: white; /* Color de texto blanco */
+      padding: 10px; /* Espaciado interno */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 20px; /* Espacio debajo del título */
+    }
+    h2 {
+      margin-top: 25px;
+      color: #444;
+    }
+    img {
+      width: 150px; /* Ajusta el tamaño de la imagen */
+      float: left; /* Alinear a la izquierda */
+      margin-right: 20px; /* Espacio a la derecha de la imagen */
+      margin-bottom: 20px; /* Espacio debajo de la imagen */
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      background: #ccc; /* Color de fondo gris */
+    }
+    table, th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #aaa; /* Color de fondo gris para el encabezado */
+      color: white;
+    }
+    .back {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 8px 12px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .role {
+      background: #f9fafb;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+    }
+    .objective {
+      background: #d3d3d3; /* Color de fondo gris */
+      border: 1px solid #a7a7a7; /* Border gris más oscuro */
+      padding: 12px;
+      border-radius: 8px;
+    }
+    .requirements {
+      background: #e9ecef; /* Color de fondo claro */
+      border: 1px solid #aaa; /* Border gris */
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+ <a href="../index.html" class="back">⬅ Volver al inicio</a>
+  <h1>Trabajadores</h1>
+  <img src="/TISLeilanyASR/Imagenes/Trabajador.png" alt="Imagen de Trabajadores" class="">
+
+<p>
+    El subsistema de <b>Trabajadores</b> es esencial para la constructora, ya que permite registrar, consultar y actualizar toda la información relacionada con el personal que trabaja en los proyectos. 
+    Su función principal es mantener un control organizado sobre los datos de los trabajadores, garantizando una mejor coordinación en las tareas asignadas y una comunicación efectiva entre el equipo y la dirección.
+</p>
+
+  <h2>Campos de Trabajadores</h2>
+  <p>Los principales campos que se registran para cada trabajador son los siguientes:</p>
+  <table>
+    <tr>
+      <th>ID Trabajadores</th>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Sexo</th>
+      <th>Fecha de nacimiento</th>
+      <th>Edad</th>
+      <th>Eliminar </th>
+    </tr>
+    <tr>
+      <td>Código único que identifica a cada trabajador dentro de la constructora.</td>
+      <td>Nombre completo del trabajador para su registro e identificación dentro de la constructora.</td>
+      <td>Correo electrónico del trabajador, usado para comunicación y notificaciones.</td>
+      <td>Número de contacto telefónico para comunicación directa con el trabajador.</td>
+      <td>Dirección del trabajador para poder ubicarlo en caso de no localizarlo por otros medios.</td>
+      <td>Sexo del trabajador(masculino/femenino) para registros.</td>
+      <td>Fecha de nacimiento del trabajador para cálculos de edad y segmentación.</td>
+      <td>Edad calculada automáticamente a partir de la fecha de nacimiento.</td>
+      <td>Opción que permite eliminar al  trabajador del sistema cuando ya no sea necesario conservar sus datos.</td>
+    </tr>
+  </table>
+
+ <h2>Permisos por rol</h2>
+<div class="role">
+  <b>Ingeniero Civil:</b> 
+  El Ingeniero Civil tiene la función de consultar la información registrada del personal para conocer datos generales y está autorizado únicamente a actualizar los datos de contacto (teléfono y dirección) de los trabajadores. Su responsabilidad incluye:
+  <ul>
+    <li>Revisar la disponibilidad de los trabajadores para asignar tareas en proyectos específicos.</li>
+    <li>Colaborar con el supervisor para garantizar que se cumplen los estándares de calidad en el trabajo.</li>
+    <li>Proporcionar orientación técnica y apoyo en la resolución de problemas en el sitio de construcción.</li>
+  </ul>
+</div>
+<div class="role">
+  <b>Supervisor:</b> 
+  El supervisor tiene la responsabilidad de:
+  <ul>
+    <li>Administrar los datos de los trabajadores mediante registro, consulta y actualización de información.</li>
+    <li>Coordinar y asignar tareas a los trabajadores en los proyectos.</li>
+    <li>Monitorear el progreso de los proyectos y el cumplimiento de plazos.</li>
+    <li>Realizar evaluaciones de desempeño del personal.</li>
+    <li>Generar reportes sobre el estado de los proyectos y de los trabajadores.</li>
+    <li>Organizar capacitaciones y sesiones informativas sobre procedimientos y seguridad.</li>
+    <li>Mantener comunicación constante con los clientes para informar sobre el avance de los proyectos.</li>
+  </ul>
+</div>
+
+  <h2>Objetivo del Subsistema</h2>
+  <div class="objective">
+    <p>
+      Mantener un registro confiable y actualizado de los clientes de la constructora con el fin de:
+    </p>
+    <ul>
+      <li>Facilitar la comunicación directa y eficiente.</li>
+      <li>Optimizar el seguimiento de proyectos contratados.</li>
+      <li>Mejorar la organización y control de la información de contacto.</li>
+      <li>Permitir la toma de decisiones estratégicas basadas en datos reales.</li>
+    </ul>
+  </div>
+
+  <h2>Requerimientos por usuario</h2>
+  <div class="requirements">
+    <p>
+      <b>Requerimientos Para el trabajador</b>
+    </p>
+    <ol>
+    <li>Crear una cuenta ingresando: Nombre, correo electrónico y contraseña.</li>
+    <li>Acceder a una cuenta existente mediante: Correo electrónico y contraseña.</li>
+    <li>Actualizar su información personal: Nombre, correo electrónico, número de teléfono y dirección.</li>
+    <li>Consultar su calendario de trabajo: Fechas y horas asignadas para proyectos en curso.</li>
+    <li>Marcar el estado de las tareas realizadas: Indicar si están completadas o en progreso.</li>
+    <li>Dejar comentarios y observaciones sobre el avance de los proyectos.</li>
+    <li>Solicitar materiales o asistencia adicional para completar las tareas asignadas.</li>
+    </ol>
+  </div>
+
+  <h2>Relación con otros subsistemas</h2>
+  <p>El subsistema de clientes está directamente relacionado con:</p>
+  <ul>
+  <li><b>Proyectos:</b> Asocia a cada trabajador con los proyectos en los que están involucrados.</li>
+  <li><b>Clientes:</b> Permite gestionar la información de los clientes que contratan los servicios de los trabajadores.</li>
+  <li><b>Finanzas:</b> Conecta con los pagos y cotizaciones relacionados con el personal.</li>
+  </ul>
+
+  <h1>Diseño de la base de datos del subsistema</h1>
+  <a href="../BDD/BDTrabajadores.html">Base de Datos del subsistema</a>
+  
+  <h1>Responsable del subsistema</h1>
+  <ul>
+    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+  </ul>
+
+</body>
+</html>
