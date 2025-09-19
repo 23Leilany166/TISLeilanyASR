@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Base de Datos para una Constructora</title>
+  <style>
+    :root {
+      --bg: #f0f0f0; /* Fondo gris claro */
+      --card: #ffffff; /* Fondo blanco para tarjetas */
+      --text: #333333; /* Texto gris oscuro */
+      --muted: #777777; /* Texto muted gris */
+      --primary: #000000; /* Texto negro */
+      --accent: #444444; /* Texto gris medio */
+      --border: #d1d5db; /* Borde gris claro */
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .logo {
+      margin: 20px;
+      width: 200px;
+      height: auto;
+      max-height: 100px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 20px;
+      padding: 0 16px;
+      flex-grow: 1;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2 {
+      font-size: 24px; 
+      margin: 20px 0 12px 0; 
+      color: #ffffff;
+      letter-spacing: .2px; 
+      text-align: center;
+      position: relative;
+      background-color: #000000;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    h1::after, h2::after {
+      content: '';
+      display: block;
+      width: 50%;
+      height: 3px;
+      background: #ffffff;
+      margin: 10px auto;
+    }
+    h3 { 
+      font-size: 20px; 
+      margin: 0 0 8px 0; 
+      color: var(--accent); 
+      font-weight: 700; 
+    }
+    p, li { font-size: 15px; }
+    .page-title {
+      text-align: center;
+      margin-bottom: 28px;
+      font-weight: 800;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table th, table td {
+      border: 1px solid var(--border);
+      padding: 8px;
+      text-align: center;
+      font-size: 14px;
+    }
+    table th {
+      background: #f3f4f6;
+      font-weight: bold;
+    }
+    .footer-note {
+      text-align: center; 
+      color: var(--muted); 
+      font-size: 12px; 
+      margin-top: 24px;
+      margin-bottom: 20px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #d1d5db;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #9ca3af;
+    }
+    .slider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .slider-content {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slider-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .construction-elements {
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      margin: 20px 0; /* Espacio encima y debajo */
+    }
+    .animated-element {
+      width: 80px; /* Ajusta el tamaño de los elementos de construcción */
+      margin: 0 10px; /* Espacio entre imágenes */
+      animation: bounce 5s infinite;
+    }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header style="width: 100%; background: #000; color: #fff; padding: 10px 0; text-align: center;">
+    <img src="./imagenes/Inicio.png" alt="Logo de la Constructora" style="width: 150px; height: auto;" />
+    <h1 style="margin: 0;">Nombre de la Constructora</h1>
+  </header>
+
+  <div class="construction-elements">
+    <img src="./imagenes/Herramienta1.jpeg" alt="Herramienta 1" class="animated-element" />
+    <img src="./imagenes/Herramienta2.jpeg" alt="Herramienta 2" class="animated-element" />
+    <img src="./imagenes/Herramienta3.png" alt="Herramienta 3" class="animated-element" />
+  </div>
+
+  <main class="container">
+    <h1 class="page-title">Sistema de Base de Datos para una Constructora(MASON)</h1>
+
+    <!-- INTRODUCCIÓN DEL SISTEMA -->
+    <h1>Sistema de Gestión de la Constructora (SGC)</h1>
+    <p>
+      El Sistema de Gestión de la Constructora (SGC) es un sistema propuesto para optimizar
+      la administración en el sector de la construcción, diseñado para gestionar de manera
+      eficiente las áreas del negocio: Clientes, Trabajadores, Planos, Proveedores, Materiales,
+      Proyectos y Finanzas. 
+    </p>
+      <h1>Diagrama</h1>
+  <img src="./Imagenes/SGB.png" alt="Diagrama de la base de datos" width="800">
+
+    <h1>Problemática del proyecto</h1>
+    <p>
+      La problemática a resolver en la constructora es la falta de organización en el manejo de información,
+      lo que dificulta el seguimiento adecuado de clientes, trabajadores, proveedores y planos, 
+      provocando retrasos en proyectos y errores en la toma de decisiones. 
+      Además, la ausencia de un control centralizado limita la capacidad de coordinar recursos humanos,
+      materiales y técnicos de manera eficiente.
+    </p>
+    
+    <h1>Objetivo del proyecto</h1>
+    <p>
+      Sistematizar los procesos de gestión de clientes, trabajadores, planos y proveedores 
+      mediante el desarrollo de un sistema digital, con el fin de optimizar el seguimiento 
+      de proyectos, la comunicación entre las distintas áreas y la toma de decisiones estratégicas 
+      en la constructora(MASON).
+    </p>
+
+    <h1>Subsistemas del proyecto</h1>
+    <p>
+      El sistema se fragmentó empleando la estrategia de "divide y vencerás",
+      que tiene como objetivo identificar unidades de desarrollo lo suficientemente claras 
+      para ser creadas de manera independiente, pero que a su vez se integren con facilidad 
+      en el sistema completo.
+    </p>
+
+    <!-- SUBSISTEMAS -->
+    <section class="card">
+      <div style="display: flex; align-items: flex-start;">
+        <img src="./imagenes/Mason.png" alt="Mason" style="width: 150px; margin-right: 20px;" />
+        
+        <div>
+          <h2 style="margin-top: 0;">Subsistemas del proyecto</h2>
+          <p>El sistema se organiza en subsistemas utilizando la estrategia de "divide y vencerás", con el objetivo de identificar y gestionar eficientemente cada componente del proyecto de construcción. Esto permite que las distintas unidades operen de manera autónoma, garantizando su integración en un conjunto cohesivo y funcional.</p>    
+        </div>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <a href="./Subsistemas/clientes.html" class="button">Clientes</a>
+        <a href="./Subsistemas/trabajadores.html" class="button">Trabajadores</a>
+        <a href="./Subsistemas/planos.html" class="button">Planos</a>
+        <a href="./Subsistemas/proveedores.html" class="button">Proveedores</a>
+      </div>
+    </section>
+
+    <!-- MIEMBROS DEL PROYECTO -->
+    <section class="card">
+      <h2>Miembros del proyecto</h2>
+      <table>
+        <tr>
+          <td><img src="./imagenes/Leilany.jpeg" alt="Leilany Aislinn Sánchez Reyes" width="200"></td>
+        </tr>
+        <tr>
+          <td>Leilany Aislinn Sánchez Reyes</td>
+        </tr>
+        <tr>
+          <td>230110166@itsoeh.edu.mx</td>
+        </tr>
+      </table>
+    </section>
+
+    <div class="footer-note">Hecho con cariño: tú y yo contra la ingeniería, ¡vamos! 💪</div>
+  </main>
+
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.slider-content img');
+    const totalImages = images.length;
+
+    function showNextImage() {
+      images[currentIndex].style.display = 'none';
+      currentIndex = (currentIndex + 1) % totalImages;
+      images[currentIndex].style.display = 'block';
+    }
+
+    images.forEach((img, index) => {
+      img.style.display = index === 0 ? 'block' : 'none';
+    });
+
+    setInterval(showNextImage, 3000);
+  </script>
+</body>
+</html>
