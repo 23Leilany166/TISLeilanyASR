@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de la Base de Datos del Subsistema</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Fondo gris claro */
+            color: #333; /* Texto gris oscuro */
+            margin: 0;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #777; /* Color gris para los enlaces */
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: color 0.3s, background-color 0.3s; /* Efecto de transición */
+        }
+        a:hover {
+            color: white; /* Color blanco al pasar el ratón */
+            background-color: #555; /* Color gris oscuro al pasar el ratón */
+        }
+        h1, h2, h3 {
+            background-color: #000; /* Fondo negro para los títulos */
+            color: white; /* Texto blanco */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        h2 {
+            margin-top: 15px;
+        }
+        h3 {
+            margin-top: 10px;
+        }
+        pre {
+            background-color: #fff; /* Fondo blanco para el código */
+            border: 1px solid #ddd; /* Borde gris claro */
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto; /* Permite el desplazamiento horizontal */
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho de la pantalla */
+            height: auto; /* Mantiene la relación de aspecto */
+            border: 1px solid #ddd; /* Borde gris claro */
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="/TISLeilanyASR/index.html">[Inicio]</a>
+    <a href="../TISLeilanyASR/BDClientes.html">[Clientes]</a>
+    <a href="../TISLeilanyASR/BDTrabajadores.html">[Trabajadores]</a>
+    <a href="../TISLeilanyASR/BDPlanos.html">[Planos]</a>
+    <a href="../TISLeilanyASR/BDProveedores.html">[Proveedores]</a>
+
+    <h1>Diseño de la base de datos del subsistema</h1>
+    <a href="../TISLeilanyASR/Base_Datos.png">Base de Datos del subsistema</a>
+
+    <h1>Diagrama de la base de datos</h1>
+    <img src="../TISLeilanyASR/Base_Datos.png" alt="Diagrama de la base de datos" width="800">
+
+    <h1>Descripción de Pertinencia de la Arquitectura de la Base de Datos</h1>
+
+    <h2>Tabla Clientes</h2>
+    <h3>Propósito</h3>
+    <p>La tabla Clientes es fundamental para almacenar la información de los clientes que interactúan con la constructora. Permite gestionar la identidad y los datos de contacto de cada cliente, asegurando una comunicación efectiva y un acceso seguro a sus cuentas.</p>
+    <h3>Campos</h3>
+    <ul>
+        <li>ID_Cliente: Clave primaria única que identifica a cada cliente.</li>
+        <li>Nombre: Nombre completo del cliente.</li>
+        <li>Correo: Correo electrónico único y obligatorio, permite la autenticación y comunicación efectiva.</li>
+        <li>Teléfono: Campo obligatorio que facilita el contacto directo con el cliente.</li>
+        <li>Dirección: Campo que registra la dirección del cliente, esencial para la gestión de proyectos.</li>
+        <li>Sexo: Sexo del cliente.</li>
+        <li>FechaNacimiento: Fecha de nacimiento del cliente.</li>
+        <li>Edad: Edad calculada del cliente.</li>
+    </ul>
+    
+    <h2>Tabla Trabajadores</h2>
+    <h3>Propósito</h3>
+    <p>La tabla Trabajadores almacena la información de los empleados que laboran en la constructora, facilitando la gestión del personal y la asignación de proyectos.</p>
+    <h3>Campos</h3>
+    <ul>
+        <li>ID_Trabajador: Clave primaria única que identifica a cada trabajador.</li>
+        <li>Nombre: Nombre completo del trabajador.</li>
+        <li>Correo: Correo electrónico único y obligatorio.</li>
+        <li>Teléfono: Contacto directo del trabajador.</li>
+        <li>Dirección: Información de la residencia del trabajador.</li>
+        <li>Sexo: Sexo del trabajador.</li>
+        <li>FechaNacimiento: Fecha de nacimiento del trabajador.</li>
+        <li>Puesto: Cargo o posición del trabajador en la empresa.</li>
+    </ul>
+    
+    <h2>Tabla Proveedores</h2>
+    <h3>Propósito</h3>
+    <p>La tabla Proveedores permite gestionar la información de los proveedores que suministran materiales y servicios a la constructora.</p>
+    <h3>Campos</h3>
+    <ul>
+        <li>ID_Proveedor: Clave primaria única que identifica a cada proveedor.</li>
+        <li>Nombre: Nombre del proveedor.</li>
+        <li>Correo: Correo electrónico del proveedor.</li>
+        <li>Teléfono: Contacto directo del proveedor.</li>
+        <li>Dirección: Información de la ubicación del proveedor.</li>
+        <li>Sexo: Sexo del contacto principal del proveedor.</li>
+        <li>FechaNacimiento: Fecha de nacimiento del contacto (si aplica).</li>
+        <li>Estado: Indica si el proveedor está activo o bloqueado.</li>
+    </ul>
+    
+    <h2>Tabla Planos</h2>
+    <h3>Propósito</h3>
+    <p>La tabla Planos almacena los detalles de los planos de construcción asociados a proyectos específicos, facilitando su gestión y seguimiento.</p>
+    <h3>Campos</h3>
+    <ul>
+        <li>ID_Plano: Clave primaria única que identifica cada plano.</li>
+        <li>Código: Código único del plano.</li>
+        <li>Calle: Calle del proyecto asociado.</li>
+        <li>Número: Número de la propiedad del proyecto.</li>
+        <li>ProyectoAsociado: Clave foránea que relaciona el plano con un proyecto específico.</li>
+        <li>Encargado: Nombre del encargado del plano.</li>
+    </ul>
+
+    <h1>Código SQL para crear tablas</h1>
+    <pre><code>
+        CREATE DATABASE ConstructoraBD;
+        USE ConstructoraBD;
+
+        CREATE TABLE Clientes (
+            ID_Cliente INT PRIMARY KEY IDENTITY,
+            Nombre NVARCHAR(100) NOT NULL,
+            Correo NVARCHAR(100) UNIQUE NOT NULL,
+            Teléfono NVARCHAR(15) NOT NULL,
+            Dirección NVARCHAR(255) NOT NULL,
+            Sexo CHAR(1),
+            FechaNacimiento DATE,
+            Edad INT
+        );
+
+        CREATE TABLE Trabajadores (
+            ID_Trabajador INT PRIMARY KEY IDENTITY,
+            Nombre NVARCHAR(100) NOT NULL,
+            Correo NVARCHAR(100) UNIQUE NOT NULL,
+            Teléfono NVARCHAR(15) NOT NULL,
+            Dirección NVARCHAR(255) NOT NULL,
+            Sexo CHAR(1),
+            FechaNacimiento DATE,
+            Puesto NVARCHAR(100)
+        );
+
+        CREATE TABLE Proveedores (
+            ID_Proveedor INT PRIMARY KEY IDENTITY,
+            Nombre NVARCHAR(100) NOT NULL,
+            Correo NVARCHAR(100) UNIQUE NOT NULL,
+            Teléfono NVARCHAR(15) NOT NULL,
+            Dirección NVARCHAR(255) NOT NULL,
+            Sexo CHAR(1),
+            FechaNacimiento DATE,
+            Estado NVARCHAR(10) CHECK (Estado IN ('Activo', 'Bloqueado'))
+        );
+
+        CREATE TABLE Planos (
+            ID_Plano INT PRIMARY KEY IDENTITY,
+            Código NVARCHAR(50) NOT NULL,
+            Calle NVARCHAR(100) NOT NULL,
+            Número NVARCHAR(10) NOT NULL,
+            ProyectoAsociado INT,
+            Encargado NVARCHAR(100),
+            FOREIGN KEY (ProyectoAsociado) REFERENCES Proyectos(ID_Proyecto)
+        );
+    </code></pre>
+
+    <h1>Código SQL para agregar registros a las tablas</h1>
+
+    <h3>Registro de Clientes</h3>
+    <pre><code>
+    INSERT INTO Clientes (Nombre, Correo, Teléfono, Dirección, Sexo, FechaNacimiento, Edad) VALUES
+    ('Juan Pérez', 'juan.perez@example.com', '555-0101', 'Av. Siempre Viva, 123', 'M', '1990-01-01', 33),
+    ('María López', 'maria.lopez@example.com', '555-0102', 'Calle Falsa, 456', 'F', '1985-05-15', 38);
+    </code></pre>
+
+    <h3>Registro de Trabajadores</h3>
+    <pre><code>
+    INSERT INTO Trabajadores (Nombre, Correo, Teléfono, Dirección, Sexo, FechaNacimiento, Puesto) VALUES
+    ('Pedro González', 'pedro.gonzalez@example.com', '555-0103', 'Calle de la Paz, 789', 'M', '1992-03-12', 'Ingeniero'),
+    ('Ana Ramírez', 'ana.ramirez@example.com', '555-0104', 'Paseo de la Reforma, 101', 'F', '1988-07-20', 'Arquitecta');
+    </code></pre>
+
+    <h3>Registro de Proveedores</h3>
+    <pre><code>
+    INSERT INTO Proveedores (Nombre, Correo, Teléfono, Dirección, Sexo, FechaNacimiento, Estado) VALUES
+    ('Javier', 'Javier@gmail.com', '555-0105', 'Calle 1, Mexico', 'M', '1980-02-01', 'Activo'),
+    ('Alan', 'Alan@gmail.com', '555-0106', 'Calle 2, Mexico', 'M', '1975-04-15', 'Bloqueado');
+    </code></pre>
+
+    <h3>Registro de Planos</h3>
+    <pre><code>
+    INSERT INTO Planos (Código, Calle, Número, ProyectoAsociado, Encargado) VALUES
+    ('PL-001', 'Av. Siempre Viva', '123', 1, 'Juan Pérez'),
+    ('PL-002', 'Calle Insurgete', '456', 2, 'María López');
+    </code></pre>
+
+</body>
+</html>

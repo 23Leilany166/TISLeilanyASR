@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseño de la Base de Datos del Subsistema - Planos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #777;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+        a:hover {
+            color: white;
+            background-color: #555;
+        }
+        h1, h2, h3 {
+            background-color: #000;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        h2 {
+            margin-top: 15px;
+        }
+        h3 {
+            margin-top: 10px;
+        }
+        pre {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            overflow-x: auto;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../TISLeilanyASR/index.html">[Inicio]</a>
+    <a href="../TISLeilanyASR/Clientes.html">[Clientes]</a>
+    <a href="../TISLeilanyASR/Trabajadores.html">[Trabajadores]</a>
+    <a href="../TISLeilanyASR/Planos.html"></a>[Planos]</a>
+    <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
+    
+    <h1>Diagrama de la Base de Datos</h1>
+    <img src="../TISLeilanyASR/BDPlanos.png" alt="Diagrama de la base de datos" width="800">
+
+    <h1>Descripción de la Base de Datos de Planos</h1>
+
+    <h2>Propósito General</h2>
+    <p>La base de datos de Planos está diseñada para gestionar los planos de construcción dentro de los proyectos de la constructora. Incluye información sobre los planos, el encargado de cada plano, el proyecto asociado, y la relación entre estos planos y los trabajadores encargados. Esta base de datos es crucial para asegurar que toda la información técnica esté organizada, actualizada y accesible para los roles pertinentes como arquitectos, supervisores e ingenieros.</p>
+
+    <h2>Tabla Planos</h2>
+    <h3>Propósito</h3>
+    <p>La tabla Planos almacena información detallada de cada plano de construcción, incluyendo un código único, la ubicación física (calle y número), el proyecto asociado y la fecha de creación del plano. Este registro es esencial para controlar la disponibilidad y el estado de cada plano dentro del proyecto.</p>
+
+    <h3>Campos</h3>
+    <ul>
+        <li><strong>ID_Plano:</strong> Clave primaria única que identifica cada plano en la base de datos. Está configurada como IDENTITY para auto-incrementarse automáticamente con cada nuevo plano.</li>
+        <li><strong>Código:</strong> Un código único para cada plano. Este código es utilizado para identificar de manera rápida y eficiente cada plano.</li>
+        <li><strong>Calle:</strong> La ubicación física donde se encuentra el proyecto relacionado con el plano. Es esencial para la logística y organización del proyecto.</li>
+        <li><strong>Número:</strong> Número o versión del plano, útil para hacer referencia a la versión más reciente o modificada del plano.</li>
+        <li><strong>ProyectoAsociado:</strong> Referencia al proyecto asociado a este plano. Este campo puede estar relacionado con una tabla de proyectos que contenga la información de cada proyecto específico.</li>
+        <li><strong>Encargado:</strong> ID del trabajador encargado de este plano. Este trabajador puede ser un arquitecto, ingeniero o supervisor que esté a cargo de coordinar el plano y su implementación en obra.</li>
+        <li><strong>FechaCreacion:</strong> La fecha en la que se creó el plano. Este campo se establece por defecto con la fecha actual de creación, lo que facilita el seguimiento histórico de cada plano.</li>
+    </ul>
+
+    <h2>Relaciones Importantes</h2>
+    <p>La base de datos de Planos está interrelacionada con otras tablas clave, como Clientes, Trabajadores, y Proveedores. Estas relaciones aseguran que la información esté organizada y accesible para los trabajadores clave del proyecto, como arquitectos, ingenieros y supervisores.</p>
+
+    <h3>Tabla Clientes_Planos</h3>
+    <h3>Propósito</h3>
+    <p>La tabla Clientes_Planos establece una relación entre los Clientes y los Planos. Un cliente puede tener varios planos asociados a diferentes proyectos, y un plano puede estar relacionado con varios clientes. Esta relación facilita la asignación de planos a proyectos específicos de los clientes y optimiza la gestión de recursos.</p>
+
+    <h3>Campos</h3>
+    <ul>
+        <li><strong>ID_Cliente:</strong> Clave foránea que hace referencia a la tabla Clientes, indicando qué cliente está asociado con el plano.</li>
+        <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos, indicando qué plano está asociado con el cliente en cuestión.</li>
+    </ul>
+
+    <h3>Tabla Planos_Trabajadores</h3>
+    <h3>Propósito</h3>
+    <p>La tabla Planos_Trabajadores establece qué trabajador está encargado de qué plano y qué rol desempeña. Los roles pueden ser de arquitecto, ingeniero o supervisor, y permiten asignar responsabilidades claras para la gestión de los planos y asegurar que cada plano esté debidamente supervisado y ejecutado.</p>
+
+    <h3>Campos</h3>
+    <ul>
+        <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos, indicando qué plano está asociado con el trabajador.</li>
+        <li><strong>ID_Trabajador:</strong> Clave foránea que hace referencia a la tabla Trabajadores, indicando qué trabajador está vinculado al plano en cuestión.</li>
+        <li><strong>Rol:</strong> Rol del trabajador en relación con el plano. Puede ser "Arquitecto", "Ingeniero" o "Supervisor", dependiendo del nivel de acceso y responsabilidad del trabajador con el plano.</li>
+    </ul>
+
+    <h3>Tabla Proveedores_Planos</h3>
+    <h3>Propósito</h3>
+    <p>La tabla Proveedores_Planos vincula a los proveedores con los planos. Un proveedor puede suministrar materiales o servicios necesarios para los planos de un proyecto. Esta relación facilita la gestión de los recursos necesarios para la implementación de los planos.</p>
+
+    <h3>Campos</h3>
+    <ul>
+        <li><strong>ID_Proveedor:</strong> Clave foránea que hace referencia a la tabla Proveedores, indicando qué proveedor está asociado con el plano.</li>
+        <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos, indicando qué plano está asociado con el proveedor.</li>
+    </ul>
+
+    <h2>Código SQL para crear las tablas</h2>
+    <pre><code>
+        CREATE DATABASE PlanosBD;
+        USE PlanosBD;
+
+        -- Tabla de Planos
+        CREATE TABLE Planos (
+            ID_Plano INT PRIMARY KEY IDENTITY(1,1),
+            Código NVARCHAR(50) NOT NULL,
+            Calle NVARCHAR(255) NOT NULL,
+            Número NVARCHAR(10) NOT NULL,
+            ProyectoAsociado INT NOT NULL,
+            Encargado INT NOT NULL,
+            FechaCreacion DATE NOT NULL DEFAULT GETDATE()
+        );
+
+        -- Tabla de Clientes
+        CREATE TABLE Clientes (
+            ID_Cliente INT PRIMARY KEY IDENTITY(1,1),
+            Nombre NVARCHAR(100) NOT NULL,
+            Apellido_Paterno NVARCHAR(100),
+            Apellido_Materno NVARCHAR(100),
+            Correo NVARCHAR(100) NOT NULL,
+            Teléfono NVARCHAR(15) NOT NULL,
+            Dirección NVARCHAR(255) NOT NULL,
+            Sexo NVARCHAR(10) NOT NULL,
+            Fecha_nacimiento DATE NOT NULL,
+            Edad INT
+        );
+
+        -- Relación entre Clientes y Planos
+        CREATE TABLE Clientes_Planos (
+            ID_Cliente INT,
+            ID_Plano INT,
+            PRIMARY KEY (ID_Cliente, ID_Plano),
+            FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
+            FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano)
+        );
+
+        -- Relación entre Planos y Trabajadores
+        CREATE TABLE Planos_Trabajadores (
+            ID_Plano INT,
+            ID_Trabajador INT,
+            Rol NVARCHAR(50) NOT NULL,
+            PRIMARY KEY (ID_Plano, ID_Trabajador),
+            FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano),
+            FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores(ID_Trabajador)
+        );
+
+        -- Relación entre Planos y Proveedores
+        CREATE TABLE Proveedores_Planos (
+            ID_Proveedor INT,
+            ID_Plano INT,
+            PRIMARY KEY (ID_Proveedor, ID_Plano),
+            FOREIGN KEY (ID_Proveedor) REFERENCES Proveedores(ID_Proveedor),
+            FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano)
+        );
+    </code></pre>
+
+    <h1>Código SQL para agregar registros a las tablas</h1>
+
+    <h3>Registro de Planos</h3>
+    <pre><code>
+    INSERT INTO Planos (Código, Calle, Número, ProyectoAsociado, Encargado, FechaCreacion) VALUES
+    ('PL-001', 'Av. Siempre Viva', '123', 1, 1, GETDATE()),
+    ('PL-002', 'Calle Insurgentes', '456', 2, 2, GETDATE());
+    </code></pre>
+
+    <h3>Registro de Clientes</h3>
+    <pre><code>
+    INSERT INTO Clientes (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Edad) VALUES
+    ('Carlos', 'García', 'Martínez', 'carlos.garcia@example.com', '555-0201', 'Calle Principal 789', 'M', '1980-10-10', 45),
+    ('Ana', 'Rodríguez', 'Sánchez', 'ana.rodriguez@example.com', '555-0202', 'Calle Secundaria 101', 'F', '1992-06-20', 33);
+    </code></pre>
+
+</body>
+</html>

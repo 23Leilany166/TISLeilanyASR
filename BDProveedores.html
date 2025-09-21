@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diseño de la Base de Datos del Subsistema - Proveedores</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #777;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-right: 10px;
+      transition: color 0.3s, background-color 0.3s;
+    }
+    a:hover {
+      color: white;
+      background-color: #555;
+    }
+    h1, h2, h3 {
+      background-color: #000;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    h1 {
+      margin-top: 20px;
+    }
+    h2 {
+      margin-top: 15px;
+    }
+    h3 {
+      margin-top: 10px;
+    }
+    pre {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      overflow-x: auto;
+    }
+    ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+    <a href="../TISLeilanyASR/index.html">[Inicio]</a>
+    <a href="../TISLeilanyASR/Clientes.html">[Clientes]</a>
+    <a href="../TISLeilanyASR/Trabajadores.html">[Trabajadores]</a>
+    <a href="../TISLeilanyASR/Planos.html"></a>[Planos]</a>
+    <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
+
+  <h1>Diagrama de la Base de Datos</h1>
+  <img src="../TISLeilanyASR/BDProveedores.png" alt="Diagrama de la base de datos" width="800">
+
+  <h1>Descripción de la Base de Datos de Proveedores</h1>
+
+  <h2>Propósito General</h2>
+  <p>La base de datos de Proveedores está diseñada para gestionar la información de los proveedores de la constructora. Esta base de datos permite registrar, consultar, actualizar y bloquear proveedores según las necesidades del proyecto. La información detallada de los proveedores es crucial para coordinar la adquisición de materiales, servicios y recursos necesarios para el desarrollo de los proyectos de construcción.</p>
+
+  <h2>Tabla Proveedores</h2>
+  <h3>Propósito</h3>
+  <p>La tabla Proveedores contiene la información clave de cada proveedor con el fin de realizar un seguimiento eficaz de los materiales o servicios suministrados. Es una tabla fundamental que permite la gestión de las relaciones con los proveedores, su contacto y estado (activo o eliminado), facilitando la toma de decisiones en la gestión de compras.</p>
+
+  <h3>Campos</h3>
+  <ul>
+    <li><strong>ID_Proveedor:</strong> Clave primaria única que identifica a cada proveedor dentro del sistema. Este campo es de tipo INT con la propiedad IDENTITY, lo que asegura que cada nuevo proveedor tenga un identificador único automáticamente.</li>
+    <li><strong>Nombre:</strong> Nombre completo del proveedor, utilizado para su identificación y gestión dentro del sistema. Este campo es obligatorio.</li>
+    <li><strong>Apellido_Paterno:</strong> Apellido paterno del proveedor. Aunque es opcional, este campo ayuda a tener una identificación más detallada del proveedor.</li>
+    <li><strong>Apellido_Materno:</strong> Apellido materno del proveedor, también opcional, pero útil para una identificación más completa.</li>
+    <li><strong>Correo:</strong> Correo electrónico del proveedor. Es obligatorio y único, utilizado para la comunicación directa con el proveedor.</li>
+    <li><strong>Teléfono:</strong> Número de teléfono para contactar al proveedor. Es obligatorio y se utiliza para una comunicación más directa.</li>
+    <li><strong>Dirección:</strong> Dirección física del proveedor, importante para la logística de envío de materiales.</li>
+    <li><strong>Sexo:</strong> Sexo del proveedor, útil para registros estadísticos y análisis.</li>
+    <li><strong>Fecha_nacimiento:</strong> Fecha de nacimiento del proveedor, importante para cumplir con normativas o estadísticas demográficas.</li>
+    <li><strong>Eliminar:</strong> Indicador de eliminación lógica. Si es 0, el proveedor está activo, si es 1, el proveedor está bloqueado o eliminado. Este campo es crucial para mantener la integridad de los datos sin perder la trazabilidad histórica.</li>
+  </ul>
+
+  <h2>Relaciones Importantes</h2>
+  <p>La tabla Proveedores se relaciona con otras tablas en el sistema para garantizar la coordinación eficiente entre los proveedores, trabajadores y otros recursos. A continuación, se describen las relaciones clave:</p>
+
+  <h3>Tabla Proveedores_Trabajadores</h3>
+  <h3>Propósito</h3>
+  <p>La tabla Proveedores_Trabajadores establece una relación entre los proveedores y los trabajadores encargados de gestionar esos proveedores. Un proveedor puede estar vinculado a varios trabajadores y viceversa. Esta relación es fundamental para garantizar que los trabajadores encargados de coordinar las compras y materiales tengan acceso a la información precisa de los proveedores.</p>
+
+  <h3>Campos</h3>
+  <ul>
+    <li><strong>ID_Proveedor:</strong> Clave foránea que referencia a la tabla Proveedores, indicando qué proveedor está vinculado con el trabajador.</li>
+    <li><strong>ID_Trabajador:</strong> Clave foránea que referencia a la tabla Trabajadores, indicando qué trabajador está vinculado al proveedor en cuestión.</li>
+  </ul>
+
+  <h3>Tabla Proveedores_Planos</h3>
+  <h3>Propósito</h3>
+  <p>La tabla Proveedores_Planos es una tabla de relación que vincula a los proveedores con los planos de los proyectos. Un proveedor puede estar asociado a varios planos, y un plano puede tener varios proveedores que suministran materiales o servicios. Esto ayuda a tener una trazabilidad completa de qué materiales o servicios se asignan a cada plano.</p>
+
+  <h3>Campos</h3>
+  <ul>
+    <li><strong>ID_Proveedor:</strong> Clave foránea que hace referencia a la tabla Proveedores.</li>
+    <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos.</li>
+  </ul>
+
+  <h2>Código SQL para crear las tablas</h2>
+  <pre><code>
+    CREATE DATABASE ProveedoresBD;
+    USE ProveedoresBD;
+
+    -- Tabla de Proveedores
+    CREATE TABLE ProveedoresSUB (
+        ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),
+        Nombre NVARCHAR(100) NOT NULL,
+        Apellido_Paterno NVARCHAR(100),
+        Apellido_Materno NVARCHAR(100),
+        Correo NVARCHAR(100) NOT NULL,
+        Teléfono NVARCHAR(15) NOT NULL,
+        Dirección NVARCHAR(255) NOT NULL,
+        Sexo NVARCHAR(10) NOT NULL,
+        Fecha_nacimiento DATE NOT NULL,
+        Eliminar BIT DEFAULT 0
+    );
+
+    -- Relación entre Proveedores y Planos
+    CREATE TABLE Proveedores_Planos (
+        ID_Proveedor INT,
+        ID_Plano INT,
+        PRIMARY KEY (ID_Proveedor, ID_Plano),
+        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor),
+        FOREIGN KEY (ID_Plano) REFERENCES PlanosSUB(ID_Plano)
+    );
+
+    -- Relación entre Proveedores y Trabajadores
+    CREATE TABLE Proveedores_Trabajadores (
+        ID_Proveedor INT,
+        ID_Trabajador INT,
+        PRIMARY KEY (ID_Proveedor, ID_Trabajador),
+        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor),
+        FOREIGN KEY (ID_Trabajador) REFERENCES TrabajadoresSUB(ID_Trabajador)
+    );
+
+    -- Permisos de acceso para gestionar proveedores
+    CREATE TABLE Permisos_Proveedores (
+        ID_Trabajador INT,
+        ID_Proveedor INT,
+        Permiso NVARCHAR(50),
+        PRIMARY KEY (ID_Trabajador, ID_Proveedor),
+        FOREIGN KEY (ID_Trabajador) REFERENCES TrabajadoresSUB(ID_Trabajador),
+        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor)
+    );
+  </code></pre>
+
+  <h2>Código SQL para agregar registros a las tablas</h2>
+
+  <h3>Registro de Proveedores</h3>
+  <pre><code>
+    INSERT INTO ProveedoresSUB (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Eliminar) VALUES
+    ('Juan', 'Pérez', 'González', 'juan.perez@example.com', '555-0101', 'Calle Falsa 123', 'M', '1980-05-15', 0),
+    ('María', 'López', 'Fernández', 'maria.lopez@example.com', '555-0102', 'Calle Siempre Viva 456', 'F', '1975-03-22', 0);
+  </code></pre>
+
+  <h1>Responsable del subsistema</h1>
+  <ul>
+    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+  </ul>
+
+</body>
+</html>
