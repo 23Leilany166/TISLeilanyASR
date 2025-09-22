@@ -67,7 +67,7 @@
     <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
 
     <h1>Diagrama de la Base de Datos</h1>
-    <img src="../TISLeilanyASR/BDTrabajadores.png" alt="Diagrama de la base de datos" width="800">
+    <img src="../TISLeilanyASR/BDTrabajador.png" alt="Diagrama de la base de datos" width="800">
 
     <h1>Descripción de la Base de Datos de Trabajadores</h1>
 
@@ -135,53 +135,70 @@
 
     <h2>Código SQL para crear las tablas</h2>
     <pre><code>
-        CREATE DATABASE TrabajadoresBD;
-        USE TrabajadoresBD;
+     CREATE DATABASE TrabajadoresBD1;
+     GO
+     USE TrabajadoresBD1;
+     GO
 
-        -- Tabla de Trabajadores
-        CREATE TABLE Trabajadores (
-            ID_Trabajador INT PRIMARY KEY IDENTITY(1,1),
-            Nombre NVARCHAR(100) NOT NULL,
-            Apellido_Paterno NVARCHAR(100),
-            Apellido_Materno NVARCHAR(100),
-            Correo NVARCHAR(100) UNIQUE NOT NULL,
-            Teléfono NVARCHAR(15) NOT NULL,
-            Dirección NVARCHAR(255) NOT NULL,
-            Sexo CHAR(1),
-            FechaNacimiento DATE,
-            Puesto NVARCHAR(50) NOT NULL
-        );
+CREATE TABLE Trabajadores1 (
+    ID_Trabajador INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Apellido_Paterno NVARCHAR(100),
+    Apellido_Materno NVARCHAR(100),
+    Correo NVARCHAR(100) UNIQUE NOT NULL,
+    Telefono NVARCHAR(15) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Sexo CHAR(1),
+    FechaNacimiento DATE,
+    Puesto NVARCHAR(50) NOT NULL
+);
+GO
 
-        -- Tabla de Clientes
-        CREATE TABLE Clientes (
-            ID_Cliente INT PRIMARY KEY IDENTITY(1,1),
-            Nombre NVARCHAR(100) NOT NULL,
-            Apellido_Paterno NVARCHAR(100),
-            Apellido_Materno NVARCHAR(100),
-            Correo NVARCHAR(100) NOT NULL,
-            Teléfono NVARCHAR(15) NOT NULL,
-            Dirección NVARCHAR(255) NOT NULL,
-            Sexo NVARCHAR(10) NOT NULL,
-            Fecha_nacimiento DATE NOT NULL,
-            Edad INT
-        );
+CREATE TABLE Clientes1 (
+    ID_Cliente INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Apellido_Paterno NVARCHAR(100),
+    Apellido_Materno NVARCHAR(100),
+    Correo NVARCHAR(100) UNIQUE NOT NULL,
+    Telefono NVARCHAR(15) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Sexo NVARCHAR(10) NOT NULL,
+    FechaNacimiento DATE NOT NULL,
+    Edad INT
+);
+GO
 
-        -- Relación entre Clientes y Trabajadores
-        CREATE TABLE Clientes_Trabajadores (
-            ID_Cliente INT,
-            ID_Trabajador INT,
-            PRIMARY KEY (ID_Cliente, ID_Trabajador),
-            FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
-            FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores(ID_Trabajador)
-        );
+CREATE TABLE Proveedores1 (
+    ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Apellido_Paterno NVARCHAR(100),
+    Apellido_Materno NVARCHAR(100),
+    Correo NVARCHAR(100) UNIQUE NOT NULL,
+    Telefono NVARCHAR(15) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Sexo NVARCHAR(10),
+    FechaNacimiento DATE
+);
+GO
 
-        -- Relación entre Proveedores y Trabajadores
-        CREATE TABLE Proveedores_Trabajadores (
-            ID_Proveedor INT,
-            ID_Trabajador INT,
-            PRIMARY KEY (ID_Proveedor, ID_Trabajador),
-            FOREIGN KEY (ID_Proveedor) REFERENCES Proveedores(ID_Proveedor),
-            FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores(ID_Trabajador)
+CREATE TABLE Clientes_Trabajadores1 (
+    ID_Cliente INT,
+    ID_Trabajador INT,
+    PRIMARY KEY (ID_Cliente, ID_Trabajador),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes1(ID_Cliente),
+    FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores1(ID_Trabajador)
+);
+GO
+
+CREATE TABLE Proveedores_Trabajadores1 (
+    ID_Proveedor INT,
+    ID_Trabajador INT,
+    PRIMARY KEY (ID_Proveedor, ID_Trabajador),
+    FOREIGN KEY (ID_Proveedor) REFERENCES Proveedores1(ID_Proveedor),
+    FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores1(ID_Trabajador)
+);
+GO
+
         );
     </code></pre>
 
