@@ -4,93 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diseño de la Base de Datos del Subsistema - Clientes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        a {
-            text-decoration: none;
-            color: #777;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-right: 10px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-        a:hover {
-            color: white;
-            background-color: #555;
-        }
-        h1, h2, h3 {
-            background-color: #000;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        h2 {
-            margin-top: 15px;
-        }
-        h3 {
-            margin-top: 10px;
-        }
-        pre {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            overflow-x: auto;
-        }
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    </style>
+ <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #777;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    a:hover {
+        color: white;
+        background-color: #555;
+    }
+
+    /* Títulos con colores fríos oscuros */
+    h1 {
+        background-color: #2C3E50; /* Azul grisáceo oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    h2 {
+        background-color: #34495E; /* Azul oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+
+    h3 {
+        background-color: #1A5276; /* Azul petróleo oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    pre {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+
+
 </head>
 <body>
 
     <a href="../TISLeilanyASR/index.html">[Inicio]</a>
     <a href="../TISLeilanyASR/Clientes.html">[Clientes]</a>
     <a href="../TISLeilanyASR/Trabajadores.html">[Trabajadores]</a>
-    <a href="../TISLeilanyASR/Planos.html"></a>[Planos]</a>
+    <a href="../TISLeilanyASR/Planos.html">[Planos]</a>
     <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
 
     <h1>Diagrama de la base de datos</h1>
-    <img src="../TISLeilanyASR/BDClientes.png" alt="Diagrama de la base de datos" width="800">
+    <img src="../TISLeilanyASR/BD_Clientes.png" alt="Diagrama actualizado de la base de datos" width="800">
 
     <h1>Descripción de la Base de Datos de Clientes</h1>
 
     <h2>Propósito General</h2>
-    <p>La base de datos de Clientes está diseñada para gestionar todos los aspectos relacionados con los clientes de la constructora, incluyendo sus datos personales, de contacto y sus vínculos con los trabajadores y proveedores en el marco de proyectos específicos. Esta base de datos es crucial para optimizar la comunicación, la planificación de proyectos y la toma de decisiones, permitiendo una visión clara de los recursos y las relaciones que involucran a cada cliente.</p>
+    <p>La base de datos de Clientes está diseñada para gestionar todos los aspectos relacionados con los clientes de la constructora, incluyendo sus datos personales, de contacto y sus vínculos con los trabajadores y planos en el marco de proyectos específicos. Esta base de datos es crucial para optimizar la comunicación, la planificación de proyectos y la toma de decisiones, permitiendo una visión clara de los recursos y las relaciones que involucran a cada cliente.</p>
 
     <h2>Tabla Clientes</h2>
     <h3>Propósito</h3>
-    <p>La tabla Clientes almacena información relevante sobre los clientes, como su nombre, apellidos, correo electrónico, teléfono y dirección, entre otros. Es esencial para la gestión de proyectos, ya que permite conocer a los clientes asociados a un determinado proyecto y facilita la comunicación con ellos. También, a través de la eliminación lógica (campo **Eliminado**), se puede manejar de manera eficiente el estado de los clientes activos o eliminados.</p>
+    <p>La tabla Clientes almacena información relevante sobre los clientes, como su nombre, apellidos, correo electrónico, teléfono y dirección, entre otros. Es esencial para la gestión de proyectos, ya que permite conocer a los clientes asociados a un determinado proyecto y facilita la comunicación con ellos. También, a través de la eliminación lógica (campo <strong>Eliminado</strong>), se puede manejar de manera eficiente el estado de los clientes activos o eliminados.</p>
 
     <h3>Campos</h3>
     <ul>
-        <li><strong>ID_Cliente:</strong> Es la clave primaria que identifica de manera única a cada cliente. Se utiliza como referencia para asociar registros de otras tablas (como los trabajadores o proveedores asociados al cliente).</li>
-        <li><strong>Nombre:</strong> Es el primer nombre del cliente. Es obligatorio para poder identificarlo de manera adecuada en el sistema.</li>
-        <li><strong>Apellido_Paterno:</strong> Apellido paterno del cliente. Es opcional, pero permite una identificación más completa.</li>
-        <li><strong>Apellido_Materno:</strong> Apellido materno del cliente. También es opcional, pero ayuda a una identificación más completa.</li>
-        <li><strong>Correo:</strong> Correo electrónico del cliente, utilizado como principal medio de comunicación y también sirve para autenticación. Es único para cada cliente, lo que previene duplicados en el sistema.</li>
-        <li><strong>Teléfono:</strong> Número telefónico de contacto del cliente. Este campo es obligatorio para poder tener una vía alternativa de comunicación.</li>
-        <li><strong>Dirección:</strong> Dirección física del cliente, necesaria para la logística de los proyectos, como envíos o visitas. Este campo es obligatorio.</li>
-        <li><strong>Sexo:</strong> Sexo del cliente. Aunque es un campo opcional, puede ser útil para ciertos análisis o estadísticas.</li>
-        <li><strong>FechaNacimiento:</strong> La fecha de nacimiento del cliente. Ayuda a calcular su edad automáticamente.</li>
-        <li><strong>Edad:</strong> La edad del cliente, que puede ser calculada en el sistema a partir de la fecha de nacimiento.</li>
-        <li><strong>Eliminado:</strong> Indicador de eliminación lógica (0: activo, 1: eliminado). Permite marcar a los clientes como eliminados sin perder su información en el sistema.</li>
+        <li><strong>ID_Cliente:</strong> Clave primaria.</li>
+        <li><strong>Nombre:</strong> Nombre del cliente.</li>
+        <li><strong>Apellido_Paterno:</strong> Apellido paterno del cliente.</li>
+        <li><strong>Apellido_Materno:</strong> Apellido materno del cliente.</li>
+        <li><strong>Correo:</strong> Correo electrónico (único).</li>
+        <li><strong>Teléfono:</strong> Número telefónico del cliente.</li>
+        <li><strong>Dirección:</strong> Dirección física.</li>
+        <li><strong>Sexo:</strong> Género del cliente.</li>
+        <li><strong>FechaNacimiento:</strong> Fecha de nacimiento.</li>
+        <li><strong>Edad:</strong> Edad (puede calcularse automáticamente).</li>
+        <li><strong>Eliminado:</strong> Indicador de eliminación lógica.</li>
     </ul>
 
     <h2>Relaciones Importantes</h2>
@@ -98,117 +115,178 @@
 
     <h3>Tabla Clientes_Planos</h3>
     <h3>Propósito</h3>
-    <p>La tabla Clientes_Planos establece una relación de muchos a muchos entre los clientes y los planos asociados a sus proyectos. Un cliente puede tener varios planos asociados con distintos proyectos, y un plano puede estar asociado a múltiples clientes. Esta tabla ayuda a gestionar esa relación y facilita la asignación de planos a los proyectos de cada cliente.</p>
+    <p>Relaciona muchos a muchos entre clientes y planos de proyectos.</p>
 
     <h3>Campos</h3>
     <ul>
-        <li><strong>ID_Cliente:</strong> Clave foránea que hace referencia a la tabla Clientes, indicando qué cliente está asociado al plano.</li>
-        <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos, indicando qué plano está asociado al cliente.</li>
+        <li><strong>ID_Cliente:</strong> Clave foránea desde Clientes.</li>
+        <li><strong>ID_Plano:</strong> Clave foránea desde Planos.</li>
+        <li><strong>FechaRelacion:</strong> Fecha de asignación.</li>
+        <li><strong>EstadoPlano:</strong> Estado actual del plano.</li>
+        <li><strong>Comentarios:</strong> Observaciones adicionales.</li>
     </ul>
 
     <h3>Tabla Clientes_Trabajadores</h3>
     <h3>Propósito</h3>
-    <p>La tabla Clientes_Trabajadores permite vincular a los trabajadores (como ingenieros, supervisores, etc.) con los clientes asociados a proyectos. Un trabajador puede estar asignado a varios clientes y un cliente puede tener varios trabajadores. Esto facilita la asignación de tareas específicas a los trabajadores y el seguimiento de su progreso en los proyectos.</p>
+    <p>Relaciona a trabajadores con clientes para proyectos específicos.</p>
 
     <h3>Campos</h3>
     <ul>
-        <li><strong>ID_Cliente:</strong> Clave foránea que hace referencia a la tabla Clientes.</li>
-        <li><strong>ID_Trabajador:</strong> Clave foránea que hace referencia a la tabla Trabajadores.</li>
+        <li><strong>ID_Cliente:</strong> Clave foránea desde Clientes.</li>
+        <li><strong>ID_Trabajador:</strong> Clave foránea desde Trabajadores.</li>
+        <li><strong>Rol:</strong> Rol del trabajador con ese cliente.</li>
+        <li><strong>FechaAsignacion:</strong> Fecha en que fue asignado.</li>
+        <li><strong>Notas:</strong> Comentarios u observaciones.</li>
+        <li><strong>Activo:</strong> Si la asignación sigue vigente.</li>
+        <li><strong>FechaFin:</strong> Fecha de finalización (si aplica).</li>
     </ul>
+ <h2>Código SQL para crear las tablas</h2>
+  <pre><code>
+-- Crear base de datos
+CREATE DATABASE ClientesBD;
+GO
 
-    <h3>Tabla Clientes_Proveedores</h3>
-    <h3>Propósito</h3>
-    <p>La tabla Clientes_Proveedores conecta a los proveedores con los clientes. Permite la gestión de los proveedores que suministran materiales o servicios a cada cliente. Un proveedor puede estar asociado a varios clientes, y cada cliente puede tener varios proveedores. Esta relación optimiza la logística de los proyectos, garantizando la disponibilidad de recursos necesarios.</p>
+-- Seleccionar la base de datos que vamos a usar
+USE ClientesBD;
+GO
 
-    <h3>Campos</h3>
-    <ul>
-        <li><strong>ID_Cliente:</strong> Clave foránea que hace referencia a la tabla Clientes.</li>
-        <li><strong>ID_Proveedor:</strong> Clave foránea que hace referencia a la tabla Proveedores.</li>
-    </ul>
+-- Tabla de Clientes
+CREATE TABLE Clientes (
+    ID_Cliente INT PRIMARY KEY IDENTITY(1,1),  -- Usar IDENTITY en lugar de AUTO_INCREMENT
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido_Paterno VARCHAR(100),  
+    Apellido_Materno VARCHAR(100),  
+    Correo VARCHAR(100) NOT NULL,
+    Teléfono VARCHAR(15) NOT NULL,
+    Dirección VARCHAR(255) NOT NULL,
+    Sexo VARCHAR(10) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL,
+    Edad INT
+);
+GO
 
-    <h1>Código SQL para crear las tablas</h1>
-    <pre><code>
-        CREATE DATABASE ConstructoraBD;
-        USE ConstructoraBD;
+-- Tabla de Proveedores
+CREATE TABLE Proveedores (
+    ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),  -- Usar IDENTITY en lugar de AUTO_INCREMENT
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido_Paterno VARCHAR(100),  
+    Apellido_Materno VARCHAR(100), 
+    Correo VARCHAR(100) NOT NULL,
+    Teléfono VARCHAR(15) NOT NULL,
+    Dirección VARCHAR(255) NOT NULL,
+    Sexo VARCHAR(10) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL,
+    Eliminar BIT DEFAULT 0-- Usar BIT para booleano en SQL Server (0 = FALSE, 1 = TRUE)
+);
+GO
 
-        CREATE TABLE Clientes (
-            ID_Cliente INT PRIMARY KEY IDENTITY,
-            Nombre NVARCHAR(100) NOT NULL,
-            Apellido_Paterno NVARCHAR(100),
-            Apellido_Materno NVARCHAR(100),
-            Correo NVARCHAR(100) UNIQUE NOT NULL,
-            Teléfono NVARCHAR(15) NOT NULL,
-            Dirección NVARCHAR(255) NOT NULL,
-            Sexo CHAR(1),
-            FechaNacimiento DATE,
-            Edad INT,
-            Eliminado BIT DEFAULT 0 -- 0 = Activo, 1 = Eliminado
-        );
+-- Tabla de Trabajadores
+CREATE TABLE Trabajadores (
+    ID_Trabajador INT PRIMARY KEY IDENTITY(1,1),  -- Usar IDENTITY en lugar de AUTO_INCREMENT
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido_Paterno VARCHAR(100),  -- Corregir el nombre de la columna
+    Apellido_Materno VARCHAR(100),  -- Corregir el nombre de la columna
+    Correo VARCHAR(100) NOT NULL,
+    Teléfono VARCHAR(15) NOT NULL,
+    Dirección VARCHAR(255) NOT NULL,
+    Sexo VARCHAR(10) NOT NULL,
+    Fecha_nacimiento DATE NOT NULL,
+    Puesto VARCHAR(50) NOT NULL, 
+    HoraEntrada TIME,  -- Usar TIME en lugar de VARCHAR para horas
+    HoraSalida TIME  -- Usar TIME en lugar de VARCHAR para horas
+);
+GO
 
-        -- Tabla de relación Clientes_Planos
-        CREATE TABLE Clientes_Planos (
-            ID_Cliente INT,
-            ID_Plano INT,
-            PRIMARY KEY (ID_Cliente, ID_Plano),
-            FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
-            FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano)
-        );
+-- Tabla de relación Clientes_Trabajadores
+CREATE TABLE Clientes_Trabajadores (
+    ID_Cliente INT,
+    ID_Trabajador INT,
+	Rol NVARCHAR(50), --para indicar el rol del trabajador (Ej. "Supervisor", "Diseñador").
+    FechaAsignacion DATE, --para control de tiempo.
+    Notas NVARCHAR(255),
+    Activo BIT DEFAULT 1,
+	FechaFin DATE,
+    PRIMARY KEY (ID_Cliente, ID_Trabajador),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
+    FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores(ID_Trabajador)
+);
+GO
 
-        -- Tabla de relación Clientes_Trabajadores
-        CREATE TABLE Clientes_Trabajadores (
-            ID_Cliente INT,
-            ID_Trabajador INT,
-            PRIMARY KEY (ID_Cliente, ID_Trabajador),
-            FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
-            FOREIGN KEY (ID_Trabajador) REFERENCES Trabajadores(ID_Trabajador)
-        );
+-- Tabla de Planos
+CREATE TABLE Planos (
+    ID_Plano INT PRIMARY KEY IDENTITY(1,1),  -- Usar IDENTITY en lugar de AUTO_INCREMENT
+    Código VARCHAR(50) NOT NULL,
+    Calle VARCHAR(255) NOT NULL,
+    Número INT NOT NULL,
+    Proyecto_asociado VARCHAR(100) NOT NULL,
+    Encargado VARCHAR(100) NOT NULL
+);
+GO
 
-        -- Tabla de relación Clientes_Proveedores
-        CREATE TABLE Clientes_Proveedores (
-            ID_Cliente INT,
-            ID_Proveedor INT,
-            PRIMARY KEY (ID_Cliente, ID_Proveedor),
-            FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
-            FOREIGN KEY (ID_Proveedor) REFERENCES Proveedores(ID_Proveedor)
-        );
-    </code></pre>
+-- Tabla de relación Clientes_Planos
+CREATE TABLE Clientes_Planos (
+    ID_Cliente INT,
+    ID_Plano INT,
+	FechaRelacion DATE DEFAULT GETDATE(), 
+	EstadoPlano VARCHAR(50),
+	Comentarios NVARCHAR(255),
+    PRIMARY KEY (ID_Cliente, ID_Plano),
+    FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente),
+    FOREIGN KEY (ID_Plano) REFERENCES Planos(ID_Plano)
+);
+GO
 
-    <h1>Código SQL para agregar registros a las tablas</h1>
+  </code></pre>
 
-    <h3>Registro de Clientes</h3>
-    <pre><code>
-    INSERT INTO Clientes (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, FechaNacimiento, Edad) VALUES
-    ('Juan Pérez', 'Pérez', 'González', 'juan.perez@example.com', '555-0101', 'Av. Siempre Viva, 123', 'M', '1990-01-01', 33),
-    ('María López', 'López', 'Fernández', 'maria.lopez@example.com', '555-0102', 'Calle Falsa, 456', 'F', '1985-05-15', 38);
-    </code></pre>
+  <h1>Código SQL para agregar registros a las tablas</h1>
 
-    <h3>Registro de Planos</h3>
-    <pre><code>
-    INSERT INTO Planos (Código, Calle, Número, ProyectoAsociado, Encargado) VALUES
-    ('PL-001', 'Av. Siempre Viva', '123', 1, 'Juan Pérez'),
-    ('PL-002', 'Calle Insurgentes', '456', 2, 'María López');
-    </code></pre>
+<h3>Registro de Clientes</h3>
+<pre><code>
+INSERT INTO Clientes (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Edad, Eliminado)
+VALUES 
+('Juan', 'Pérez', 'González', 'juan.perez@example.com', '555-0101', 'Av. Siempre Viva, 123', 'M', '1990-01-01', 33, 0),
+('María', 'López', 'Fernández', 'maria.lopez@example.com', '555-0102', 'Calle Falsa, 456', 'F', '1985-05-15', 38, 0);
+</code></pre>
 
-    <h3>Relación entre Clientes y Planos</h3>
-    <pre><code>
-    INSERT INTO Clientes_Planos (ID_Cliente, ID_Plano) VALUES
-    (1, 1), -- Cliente 1 asociado al Plano 1
-    (2, 2); -- Cliente 2 asociado al Plano 2
-    </code></pre>
+<h3>Registro de Planos</h3>
+<pre><code>
+INSERT INTO Planos (Código, Calle, Número, Proyecto_asociado, Encargado)
+VALUES 
+('PL-001', 'Av. Siempre Viva', 123, 'Proyecto A', 'Juan Pérez'),
+('PL-002', 'Calle Insurgentes', 456, 'Proyecto B', 'María López');
+</code></pre>
 
-    <h3>Relación entre Clientes y Trabajadores</h3>
-    <pre><code>
-    INSERT INTO Clientes_Trabajadores (ID_Cliente, ID_Trabajador) VALUES
-    (1, 1), -- Cliente 1 con Trabajador 1
-    (2, 2); -- Cliente 2 con Trabajador 2
-    </code></pre>
+<h3>Relación entre Clientes y Planos</h3>
+<pre><code>
+INSERT INTO Clientes_Planos (ID_Cliente, ID_Plano, FechaRelacion, EstadoPlano, Comentarios)
+VALUES 
+(1, 1, GETDATE(), 'Aprobado', 'Plano inicial del proyecto A'),
+(2, 2, GETDATE(), 'En revisión', 'Esperando aprobación final');
+</code></pre>
 
-    <h3>Relación entre Clientes y Proveedores</h3>
-    <pre><code>
-    INSERT INTO Clientes_Proveedores (ID_Cliente, ID_Proveedor) VALUES
-    (1, 1), -- Cliente 1 con Proveedor 1
-    (2, 2); -- Cliente 2 con Proveedor 2
-    </code></pre>
+<h3>Registro de Trabajadores</h3>
+<pre><code>
+INSERT INTO Trabajadores (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Puesto, HoraEntrada, HoraSalida)
+VALUES 
+('Carlos', 'Ramírez', 'Soto', 'carlos.ramirez@example.com', '555-0103', 'Calle Reforma, 789', 'M', '1980-03-10', 'Supervisor', '08:00', '17:00'),
+('Ana', 'Martínez', 'Delgado', 'ana.martinez@example.com', '555-0104', 'Av. Central, 321', 'F', '1992-07-22', 'Diseñadora', '09:00', '18:00');
+</code></pre>
+
+<h3>Relación entre Clientes y Trabajadores</h3>
+<pre><code>
+INSERT INTO Clientes_Trabajadores (ID_Cliente, ID_Trabajador, Rol, FechaAsignacion, Notas, Activo, FechaFin)
+VALUES 
+(1, 1, 'Supervisor', '2025-09-01', 'Asignado al Proyecto A', 1, NULL),
+(2, 2, 'Diseñadora', '2025-09-10', 'Diseño del Proyecto B', 1, NULL);
+</code></pre>
+
+  <h1>Responsable del subsistema</h1>
+  <ul>
+    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+  </ul>
+</body>
+</html>
+
 
 </body>
 </html>

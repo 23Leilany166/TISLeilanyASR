@@ -5,58 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Diseño de la Base de Datos del Subsistema - Planos</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-        }
-        a {
-            text-decoration: none;
-            color: #777;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-right: 10px;
-            transition: color 0.3s, background-color 0.3s;
-        }
-        a:hover {
-            color: white;
-            background-color: #555;
-        }
-        h1, h2, h3 {
-            background-color: #000;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        h2 {
-            margin-top: 15px;
-        }
-        h3 {
-            margin-top: 10px;
-        }
-        pre {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            overflow-x: auto;
-        }
-        ul {
-            margin: 10px 0;
-            padding-left: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    </style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #777;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: color 0.3s, background-color 0.3s;
+    }
+
+    a:hover {
+        color: white;
+        background-color: #555;
+    }
+
+    /* Títulos con colores fríos oscuros */
+    h1 {
+        background-color: #2C3E50; /* Azul grisáceo oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    h2 {
+        background-color: #34495E; /* Azul oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+
+    h3 {
+        background-color: #1A5276; /* Azul petróleo oscuro */
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    pre {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+</style>
+
 </head>
 <body>
 
@@ -135,8 +151,8 @@
 
     <h2>Código SQL para crear las tablas</h2>
     <pre><code>
-CREATE DATABASE PlanosBASE;
-USE PlanosBASE;
+CREATE DATABASE BDPlanos;
+USE BDPlanos;
 
 -- Tabla de Proyectos (debe ir primero porque Planos depende de ella)
 CREATE TABLE PROYECTOS (
@@ -147,9 +163,9 @@ CREATE TABLE PROYECTOS (
     FechaFin DATE
 );
 
--- Tabla de Trabajadores (debe ir antes de Planos porque Encargado es FK)
+-- Tabla de Trabajadores (debe ir antes de Planos porque es referenciada en tabla detalle)
 CREATE TABLE TRABAJADORES (
-    ID_Trabajador INT PRIMARY KEY NOT NULL,
+    ID_Trabajador INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(50) NOT NULL,
     Apellido_Paterno NVARCHAR(50) NOT NULL,
     Apellido_Materno NVARCHAR(50),
@@ -163,17 +179,15 @@ CREATE TABLE TRABAJADORES (
     Hora_Salida TIME
 );
 
--- Tabla de Planos (ya con claves foráneas correctas)
+-- Tabla de Planos (sin referencia directa a Trabajadores)
 CREATE TABLE PLANOS(
     ID_Plano INT PRIMARY KEY IDENTITY(1,1),
     Código NVARCHAR(50) NOT NULL,
     Calle NVARCHAR(255) NOT NULL,
     Número NVARCHAR(10) NOT NULL,
     ProyectoAsociado INT NOT NULL,
-    Encargado INT NOT NULL,
     FechaCreacion DATE NOT NULL DEFAULT GETDATE(),
-    FOREIGN KEY (ProyectoAsociado) REFERENCES PROYECTOS(ID_Proyecto),
-    FOREIGN KEY (Encargado) REFERENCES TRABAJADORES(ID_Trabajador)
+    FOREIGN KEY (ProyectoAsociado) REFERENCES PROYECTOS(ID_Proyecto)
 );
 
 -- Tabla de Clientes
@@ -194,6 +208,9 @@ CREATE TABLE CLIENTES (
 CREATE TABLE CLIENTES_PLANOS (
     ID_Cliente INT,
     ID_Plano INT,
+    FechaAsignacion DATE DEFAULT GETDATE(),
+    EstadoPlano NVARCHAR(50),         -- Ej: 'En revisión', 'Aprobado'
+    Comentarios NVARCHAR(255),
     PRIMARY KEY (ID_Cliente, ID_Plano),
     FOREIGN KEY (ID_Cliente) REFERENCES CLIENTES(ID_Cliente),
     FOREIGN KEY (ID_Plano) REFERENCES PLANOS(ID_Plano)
@@ -204,7 +221,10 @@ CREATE TABLE PLANOS_TRABAJADORES (
     ID_Plano INT,
     ID_Trabajador INT,
     Rol NVARCHAR(50) NOT NULL,
-    PRIMARY KEY (ID_Plano, ID_Trabajador),
+    FechaAsignacion DATE DEFAULT GETDATE(),
+    FechaFin DATE,
+    Activo BIT DEFAULT 1,
+    Notas NVARCHAR(255),
     FOREIGN KEY (ID_Plano) REFERENCES PLANOS(ID_Plano),
     FOREIGN KEY (ID_Trabajador) REFERENCES TRABAJADORES(ID_Trabajador)
 );

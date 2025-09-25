@@ -6,116 +6,107 @@
   <title>Diseño de la Base de Datos del Subsistema - Proveedores</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-      margin: 0;
-      padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 20px;
     }
+
     a {
-      text-decoration: none;
-      color: #777;
-      padding: 10px 15px;
-      border-radius: 5px;
-      margin-right: 10px;
-      transition: color 0.3s, background-color 0.3s;
+        text-decoration: none;
+        color: #777;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-right: 10px;
+        transition: color 0.3s, background-color 0.3s;
     }
+
     a:hover {
-      color: white;
-      background-color: #555;
+        color: white;
+        background-color: #555;
     }
-    h1, h2, h3 {
-      background-color: #000;
-      color: white;
-      padding: 10px;
-      border-radius: 5px;
-    }
+
     h1 {
-      margin-top: 20px;
+        background-color: #2C3E50;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 20px;
     }
+
     h2 {
-      margin-top: 15px;
+        background-color: #34495E;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 15px;
     }
+
     h3 {
-      margin-top: 10px;
+        background-color: #1A5276;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-top: 10px;
     }
+
     pre {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      overflow-x: auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
     }
+
     ul {
-      margin: 10px 0;
-      padding-left: 20px;
+        margin: 10px 0;
+        padding-left: 20px;
     }
+
     img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
     }
-  </style>
+</style>
 </head>
 <body>
 
     <a href="../TISLeilanyASR/index.html">[Inicio]</a>
     <a href="../TISLeilanyASR/Clientes.html">[Clientes]</a>
     <a href="../TISLeilanyASR/Trabajadores.html">[Trabajadores]</a>
-    <a href="../TISLeilanyASR/Planos.html"></a>[Planos]</a>
+    <a href="../TISLeilanyASR/Planos.html">[Planos]</a>
     <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
 
   <h1>Diagrama de la Base de Datos</h1>
-  <img src="../TISLeilanyASR/BDProvedores.png" alt="Diagrama de la base de datos" width="800">
+  <img src="../TISLeilanyASR/BDProoveedores.png" alt="Diagrama de la base de datos" width="800">
 
   <h1>Descripción de la Base de Datos de Proveedores</h1>
 
   <h2>Propósito General</h2>
-  <p>La base de datos de Proveedores está diseñada para gestionar la información de los proveedores de la constructora. Esta base de datos permite registrar, consultar, actualizar y bloquear proveedores según las necesidades del proyecto. La información detallada de los proveedores es crucial para coordinar la adquisición de materiales, servicios y recursos necesarios para el desarrollo de los proyectos de construcción.</p>
+  <p>La base de datos de Proveedores está diseñada para gestionar la información de los proveedores de la constructora. Permite registrar, consultar, actualizar y bloquear proveedores según las necesidades del proyecto.</p>
 
   <h2>Tabla Proveedores</h2>
   <h3>Propósito</h3>
-  <p>La tabla Proveedores contiene la información clave de cada proveedor con el fin de realizar un seguimiento eficaz de los materiales o servicios suministrados. Es una tabla fundamental que permite la gestión de las relaciones con los proveedores, su contacto y estado (activo o eliminado), facilitando la toma de decisiones en la gestión de compras.</p>
+  <p>Contiene la información clave de cada proveedor. Facilita la gestión de relaciones comerciales y el control de estado activo/bloqueado.</p>
 
   <h3>Campos</h3>
   <ul>
-    <li><strong>ID_Proveedor:</strong> Clave primaria única que identifica a cada proveedor dentro del sistema. Este campo es de tipo INT con la propiedad IDENTITY, lo que asegura que cada nuevo proveedor tenga un identificador único automáticamente.</li>
-    <li><strong>Nombre:</strong> Nombre completo del proveedor, utilizado para su identificación y gestión dentro del sistema. Este campo es obligatorio.</li>
-    <li><strong>Apellido_Paterno:</strong> Apellido paterno del proveedor. Aunque es opcional, este campo ayuda a tener una identificación más detallada del proveedor.</li>
-    <li><strong>Apellido_Materno:</strong> Apellido materno del proveedor, también opcional, pero útil para una identificación más completa.</li>
-    <li><strong>Correo:</strong> Correo electrónico del proveedor. Es obligatorio y único, utilizado para la comunicación directa con el proveedor.</li>
-    <li><strong>Teléfono:</strong> Número de teléfono para contactar al proveedor. Es obligatorio y se utiliza para una comunicación más directa.</li>
-    <li><strong>Dirección:</strong> Dirección física del proveedor, importante para la logística de envío de materiales.</li>
-    <li><strong>Sexo:</strong> Sexo del proveedor, útil para registros estadísticos y análisis.</li>
-    <li><strong>Fecha_nacimiento:</strong> Fecha de nacimiento del proveedor, importante para cumplir con normativas o estadísticas demográficas.</li>
-    <li><strong>Bloquear:</strong> Este nos ayuda a blooquear a un proovedor cuando ya no aya relacion o comunicacion con el.</li>
+    <li><strong>ID_Proveedor:</strong> Clave primaria. Se autogenera (IDENTITY).</li>
+    <li><strong>Nombre:</strong> Obligatorio.</li>
+    <li><strong>Apellido_Paterno:</strong> Apellido paterno del cliente.</li>
+    <li><strong>Apellido_Materno:</strong> Apellido materno del cliente.</li>
+    <li><strong>Correo:</strong> Obligatorio y único.</li>
+    <li><strong>Teléfono:</strong> Obligatorio.</li>
+    <li><strong>Dirección:</strong> Obligatoria.</li>
+    <li><strong>Sexo:</strong> Obligatorio.</li>
+    <li><strong>Fecha_Nacimiento:</strong> Obligatoria.</li>
+    <li><strong>Bloqueado:</strong> Indica si el proveedor está activo (0) o bloqueado (1).</li>
   </ul>
 
-  <h2>Relaciones Importantes</h2>
-  <p>La tabla Proveedores se relaciona con otras tablas en el sistema para garantizar la coordinación eficiente entre los proveedores, trabajadores y otros recursos. A continuación, se describen las relaciones clave:</p>
-
-  <h3>Tabla Proveedores_Trabajadores</h3>
-  <h3>Propósito</h3>
-  <p>La tabla Proveedores_Trabajadores establece una relación entre los proveedores y los trabajadores encargados de gestionar esos proveedores. Un proveedor puede estar vinculado a varios trabajadores y viceversa. Esta relación es fundamental para garantizar que los trabajadores encargados de coordinar las compras y materiales tengan acceso a la información precisa de los proveedores.</p>
-
-  <h3>Campos</h3>
-  <ul>
-    <li><strong>ID_Proveedor:</strong> Clave foránea que referencia a la tabla Proveedores, indicando qué proveedor está vinculado con el trabajador.</li>
-    <li><strong>ID_Trabajador:</strong> Clave foránea que referencia a la tabla Trabajadores, indicando qué trabajador está vinculado al proveedor en cuestión.</li>
-  </ul>
-
-  <h3>Tabla Proveedores_Planos</h3>
-  <h3>Propósito</h3>
-  <p>La tabla Proveedores_Planos es una tabla de relación que vincula a los proveedores con los planos de los proyectos. Un proveedor puede estar asociado a varios planos, y un plano puede tener varios proveedores que suministran materiales o servicios. Esto ayuda a tener una trazabilidad completa de qué materiales o servicios se asignan a cada plano.</p>
-
-  <h3>Campos</h3>
-  <ul>
-    <li><strong>ID_Proveedor:</strong> Clave foránea que hace referencia a la tabla Proveedores.</li>
-    <li><strong>ID_Plano:</strong> Clave foránea que hace referencia a la tabla Planos.</li>
-  </ul>
-
-  <h2>Código SQL para crear las tablas</h2>
+  <h2>Código SQL para crear la tabla</h2>
   <pre><code>
 CREATE DATABASE ProveedoresBASE;
 USE ProveedoresBASE;
@@ -124,27 +115,29 @@ USE ProveedoresBASE;
 CREATE TABLE PROVEEDORES (
     ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),
     Nombre NVARCHAR(100) NOT NULL,
+    Apellido_Materno NVARCHAR(50);
+    Apellido_Materno NVARCHAR (50);
     Correo NVARCHAR(100) NOT NULL,
     Telefono NVARCHAR(15) NOT NULL,
     Direccion NVARCHAR(255) NOT NULL,
     Sexo NVARCHAR(10) NOT NULL,
     Fecha_Nacimiento DATE NOT NULL,
-    Bloqueado BIT NOT NULL DEFAULT 0 -- Campo para bloquear proveedores (0 = activo, 1 = bloqueado)
-); 
+    Bloqueado BIT NOT NULL DEFAULT 0
+);
   </code></pre>
 
-  <h2>Código SQL para agregar registros a las tablas</h2>
-
-  <h3>Registro de Proveedores</h3>
+  <h2>Inserción de datos de ejemplo</h2>
+  <h3>Registros de Proveedores</h3>
   <pre><code>
-    INSERT INTO PROVEEDORES (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Eliminar) VALUES
-    ('Juan', 'Pérez', 'González', 'juan.perez@example.com', '555-0101', 'Calle Falsa 123', 'M', '1980-05-15', 0),
-    ('María', 'López', 'Fernández', 'maria.lopez@example.com', '555-0102', 'Calle Siempre Viva 456', 'F', '1975-03-22', 0);
+INSERT INTO PROVEEDORES (Nombre, Correo, Telefono, Direccion, Sexo, Fecha_Nacimiento, Bloqueado) VALUES
+('Juan Pérez', 'juan.perez@example.com', '555-0101', 'Calle Falsa 123', 'M', '1980-05-15', 0),
+('María López', 'maria.lopez@example.com', '555-0102', 'Calle Siempre Viva 456', 'F', '1975-03-22', 0),
+('Luis Ortega', 'luis.ortega@example.com', '555-0103', 'Av. Reforma 789', 'M', '1982-11-09', 1);
   </code></pre>
 
   <h1>Responsable del subsistema</h1>
   <ul>
-    <li>Leilany Aislinn Sanchez Reyes (230110166@itsoeh.edu.mx)</li>    
+    <li>Leilany Aislinn Sánchez Reyes (230110166@itsoeh.edu.mx)</li>    
   </ul>
 
 </body>
