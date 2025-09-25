@@ -67,7 +67,7 @@
     <a href="../TISLeilanyASR/Proveedores.html">[Proveedores]</a>
 
   <h1>Diagrama de la Base de Datos</h1>
-  <img src="../TISLeilanyASR/BDProveedores.png" alt="Diagrama de la base de datos" width="800">
+  <img src="../TISLeilanyASR/BDProvedores.png" alt="Diagrama de la base de datos" width="800">
 
   <h1>Descripción de la Base de Datos de Proveedores</h1>
 
@@ -89,7 +89,7 @@
     <li><strong>Dirección:</strong> Dirección física del proveedor, importante para la logística de envío de materiales.</li>
     <li><strong>Sexo:</strong> Sexo del proveedor, útil para registros estadísticos y análisis.</li>
     <li><strong>Fecha_nacimiento:</strong> Fecha de nacimiento del proveedor, importante para cumplir con normativas o estadísticas demográficas.</li>
-    <li><strong>Eliminar:</strong> Indicador de eliminación lógica. Si es 0, el proveedor está activo, si es 1, el proveedor está bloqueado o eliminado. Este campo es crucial para mantener la integridad de los datos sin perder la trazabilidad histórica.</li>
+    <li><strong>Bloquear:</strong> Este nos ayuda a blooquear a un proovedor cuando ya no aya relacion o comunicacion con el.</li>
   </ul>
 
   <h2>Relaciones Importantes</h2>
@@ -117,57 +117,27 @@
 
   <h2>Código SQL para crear las tablas</h2>
   <pre><code>
-    CREATE DATABASE ProveedoresBD;
-    USE ProveedoresBD;
+CREATE DATABASE ProveedoresBASE;
+USE ProveedoresBASE;
 
-    -- Tabla de Proveedores
-    CREATE TABLE ProveedoresSUB (
-        ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),
-        Nombre NVARCHAR(100) NOT NULL,
-        Apellido_Paterno NVARCHAR(100),
-        Apellido_Materno NVARCHAR(100),
-        Correo NVARCHAR(100) NOT NULL,
-        Teléfono NVARCHAR(15) NOT NULL,
-        Dirección NVARCHAR(255) NOT NULL,
-        Sexo NVARCHAR(10) NOT NULL,
-        Fecha_nacimiento DATE NOT NULL,
-        Eliminar BIT DEFAULT 0
-    );
-
-    -- Relación entre Proveedores y Planos
-    CREATE TABLE Proveedores_Planos (
-        ID_Proveedor INT,
-        ID_Plano INT,
-        PRIMARY KEY (ID_Proveedor, ID_Plano),
-        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor),
-        FOREIGN KEY (ID_Plano) REFERENCES PlanosSUB(ID_Plano)
-    );
-
-    -- Relación entre Proveedores y Trabajadores
-    CREATE TABLE Proveedores_Trabajadores (
-        ID_Proveedor INT,
-        ID_Trabajador INT,
-        PRIMARY KEY (ID_Proveedor, ID_Trabajador),
-        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor),
-        FOREIGN KEY (ID_Trabajador) REFERENCES TrabajadoresSUB(ID_Trabajador)
-    );
-
-    -- Permisos de acceso para gestionar proveedores
-    CREATE TABLE Permisos_Proveedores (
-        ID_Trabajador INT,
-        ID_Proveedor INT,
-        Permiso NVARCHAR(50),
-        PRIMARY KEY (ID_Trabajador, ID_Proveedor),
-        FOREIGN KEY (ID_Trabajador) REFERENCES TrabajadoresSUB(ID_Trabajador),
-        FOREIGN KEY (ID_Proveedor) REFERENCES ProveedoresSUB(ID_Proveedor)
-    );
+-- Tabla de Proveedores
+CREATE TABLE PROVEEDORES (
+    ID_Proveedor INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(100) NOT NULL,
+    Correo NVARCHAR(100) NOT NULL,
+    Telefono NVARCHAR(15) NOT NULL,
+    Direccion NVARCHAR(255) NOT NULL,
+    Sexo NVARCHAR(10) NOT NULL,
+    Fecha_Nacimiento DATE NOT NULL,
+    Bloqueado BIT NOT NULL DEFAULT 0 -- Campo para bloquear proveedores (0 = activo, 1 = bloqueado)
+); 
   </code></pre>
 
   <h2>Código SQL para agregar registros a las tablas</h2>
 
   <h3>Registro de Proveedores</h3>
   <pre><code>
-    INSERT INTO ProveedoresSUB (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Eliminar) VALUES
+    INSERT INTO PROVEEDORES (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Teléfono, Dirección, Sexo, Fecha_nacimiento, Eliminar) VALUES
     ('Juan', 'Pérez', 'González', 'juan.perez@example.com', '555-0101', 'Calle Falsa 123', 'M', '1980-05-15', 0),
     ('María', 'López', 'Fernández', 'maria.lopez@example.com', '555-0102', 'Calle Siempre Viva 456', 'F', '1975-03-22', 0);
   </code></pre>
