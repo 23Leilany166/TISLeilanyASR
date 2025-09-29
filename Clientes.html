@@ -83,10 +83,8 @@
   <img src="../TISLeilanyASR/Cliente.png" alt="Imagen de Clientes" class="">
 
   <p>
-    El subsistema de <b>Clientes</b> es fundamental para la constructora, ya que permite registrar, consultar y actualizar toda la información relacionada con las personas o empresas que contratan los servicios.
-    Su función principal es mantener un control organizado de la base de clientes, garantizando un mejor seguimiento de proyectos y una comunicación efectiva.
+   El subsistema de Clientes es una base de datos para registrar y controlar la información de los clientes que contratan los servicios de la constructora. Su objetivo principal es mantener actualizada la información de los clientes y facilitar un seguimiento eficiente de los proyectos, optimizando la comunicación y la toma de decisiones estratégicas. 
   </p>
-
   <h2>Campos de Clientes</h2>
   <p>Los principales campos que se registran para cada cliente son los siguientes:</p>
   <table>
@@ -119,43 +117,58 @@
   <h2>Permisos por rol</h2>
   <div class="role">
     <b>Supervisor:</b> 
-    Que el supervisor sea capaz de registrar, consultar y actualizar la información de los clientes para mantener un control organizado y confiable de su información personal, permitiendo una gestión eficiente a través de procesos de supervisión y control.
+    El supervisor debe de ser capaz de:
+<ul>
+  <li><strong>Registrar información de nuevos clientes:</strong> 
+    <ul>
+      <th>ID Cliente</th>
+      <th>Nombre</th>
+      <th>Apellido Paterno</th>
+       <th>Apellido Materno</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Dirección</th>
+      <th>Sexo</th>
+      <th>Fecha de nacimiento</th>
+      <th>Edad</th>
+      <th>Eliminar</th>
+    </ul>
+  </li>
+
+  <li><strong>Consultar información de clientes:</strong> 
+  <li> Buscar y visualizar los datos registrados utilizando campos como:</li>
+    <ul>
+      <li><strong>ID_Cliente</strong></li>
+      <li><strong>Nombre</strong></li>
+    </ul>
+  </li>
+
+  <li><strong>Actualizar información existente:</strong> 
+   <li> Utilizando el siguiente campo: </li>
+    <ul>
+      <li><strong>ID_Cliente</strong></li>
+      <li><strong>Nombre</strong></li>
+    </ul>
+  </li>
+
+  <li><strong>Eliminar lógicamente un cliente:</strong> 
+    <li>Utilizando el siguiente campo: </li> 
+    <ul>
+      <li><strong>ID_Cliente</strong></li>
+      <li><strong>Nombre</strong></li>
+    </ul>
+  </li>
+</ul>
   </div>
   <div class="role">
     <b>Ingeniero Civil:</b>
-     El Ingeniero Civil y el Supervisor tienen la función de acceder a la información registrada de los clientes dentro del sistema de la constructora. Su permiso está limitado a la consulta de datos generales y a la actualización exclusiva de los datos de contacto. 
-     Esto asegura que puedan mantener la comunicación directa con los clientes cuando sea necesario, sin modificar información sensible o de carácter administrativo.
+     El Ingeniero Civil debe de ser capaz de: 
+    <li><strong>Consultar la información utilizando: </strong></li>
+    <ul>
+      <li><strong>ID_Cliente</strong></li>
+      <li><strong>Nombre</strong></li>
+    </ul>
   </div>
-
-<h2>Objetivo del Subsistema</h2>
-<div class="objective">
-  <p>
-    El objetivo del subsistema es gestionar y mantener actualizada la información de los clientes mediante una base de datos estructurada y confiable, para optimizar la comunicación, el seguimiento de proyectos contratados y la toma de decisiones estratégicas dentro de los procesos operativos de la constructora.
-  </p>
-</div>
-
-
-  <h2>Requerimientos por usuario</h2>
-  <div class="requirements">
-    <p>
-      <b>Requerimientos del Cliente</b>
-    </p>
-    <ol>
-    <li>Crear una cuenta ingresando: Nombre, correo electrónico y contraseña.</li>
-    <li>Acceder a una cuenta existente mediante: Correo electrónico y contraseña.</li>
-    <li>Ingresar y actualizar información personal: Nombre, correo electrónico, número de teléfono y dirección de entrega de materiales.</li>
-    <li>Consultar el estado de sus proyectos en proceso: Estado actual (En Planeación, En Construcción, Finalizado), fechas de entrega estimadas.</li>
-    <li>Solicitar cotizaciones para nuevos proyectos y servicios adicionales.</li>
-    </ol>
-  </div>
-
-  <h2>Relación con otros subsistemas</h2>
-  <p>El subsistema de clientes está directamente relacionado con:</p>
-  <ul>
-    <li><b>Proyectos:</b> Asocia a cada cliente con los proyectos que contrata.</li>
-    <li><b>Trabajadores:</b> Permite asignar personal específico a proyectos de clientes.</li>
-    <li><b>Finanzas:</b> Conecta con los pagos, cotizaciones y facturación de los clientes.</li>
-  </ul>
 
   <h1>Diseño de la base de datos del subsistema</h1>
   <a href="../TISLeilanyASR/BDClientes.html">Base de Datos del subsistema</a>
